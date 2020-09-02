@@ -1,24 +1,14 @@
-# README
+# uwuTube
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+uwuTube, a [Youtube](https://www.youtube.com/) clone, is a social media platform that allows users to watch and upload videos. 
 
-Things you may want to cover:
+## Technologies
+uwuTube utilizes AWS S3, Heroku, PostGreSQL React, Redux, and Ruby on Rails.
 
-* Ruby version
+## Features
+### User Authentication
 
-* System dependencies
+### Video Upload 
 
-* Configuration
+### Likes, Comments, Subscribe
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
