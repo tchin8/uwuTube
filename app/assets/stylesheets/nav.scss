@@ -4,6 +4,24 @@ section.top-nav {
   position: fixed;
   height: 58px;
   width: 100%;
+
+  form.search {
+    height: 32px;
+    width: 640px;
+
+    input {
+      height: 100%;
+      width: 575px;
+    }
+
+    button {
+      height: 100%;
+      width: 100%;
+
+      // .search {
+      // }
+    }
+  }
   
   button.signin {
     border: 1px solid #065fd4;

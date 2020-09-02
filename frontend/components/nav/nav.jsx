@@ -12,7 +12,7 @@ const Nav = props => {
 
   return (
     <section className="top-nav">
-      {/* need dynamic button, logged in then it's our initial */}
+      
       <form className="search">
         <input type="text"
           placeholder="Search"/>
@@ -20,6 +20,8 @@ const Nav = props => {
           <FontAwesomeIcon icon="search" className="search" />
         </button>
       </form>
+
+      {/* need dynamic button, logged in then it's our initial */}
       <button className="signin">
         <FontAwesomeIcon icon="user-circle" className="user-circle" />
         <span>SIGN IN</span>
