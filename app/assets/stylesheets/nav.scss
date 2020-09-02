@@ -72,6 +72,14 @@ section.top-nav {
       font-weight: 300;
     }
     
+    button:hover {
+      background-color: #f0f0f0;
+      border-color: #c8c8c8;
+      .search {
+        color: #333333;
+      }
+    }
+
     button {
       background-color: #f8f8f8;
       border: 1px solid #dbdbdb;
