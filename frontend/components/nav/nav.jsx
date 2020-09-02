@@ -6,13 +6,26 @@ import {
   Link
 } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const Nav = props => {
+const Nav = props => {
 
   return (
-    <section  className="top-nav">
+    <section className="top-nav">
       {/* need dynamic button, logged in then it's our initial */}
-      <button className="signin">SIGN IN</button>
+      <form className="search">
+        <input type="text"
+          placeholder="Search"/>
+        <button type="submit">
+          <FontAwesomeIcon icon="search" className="search" />
+        </button>
+      </form>
+      <button className="signin">
+        <FontAwesomeIcon icon="user-circle" className="user-circle" />
+        <span>SIGN IN</span>
+      </button>
     </section>
-  )
+  );
 }
+
+export default Nav;

@@ -23,6 +23,10 @@ ul, li {
 	list-style: none;
 }
 
+button {
+	background-color: inherit;
+	border: none;
+}
 
 button:focus, input:focus, textarea:focus {
 	outline: 0;
