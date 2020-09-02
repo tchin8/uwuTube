@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
         if @user.is_a? Array
             render json: @user, status: 422
         else
-            login(@user)
+            login!(@user)
             render 'api/users/show'
         end
     end
