@@ -8,14 +8,17 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import {
   faUserCircle,
   faSearch,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 
 // } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
+  fab,
   faUserCircle,
   faSearch,
+  faBars,
 );
 
 document.addEventListener("DOMContentLoaded", () => {

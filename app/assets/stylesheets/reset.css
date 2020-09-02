@@ -23,9 +23,13 @@ ul, li {
 	list-style: none;
 }
 
-button {
+button, input {
 	background-color: inherit;
 	border: none;
+}
+
+button {
+	cursor: pointer;
 }
 
 button:focus, input:focus, textarea:focus {
