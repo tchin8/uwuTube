@@ -45,3 +45,8 @@ ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this is
 :
 
 Started POST "/__better_errors/c54c2699d327c49c/variables" for ::1 at 2020-09-02 10:46:04 -0400
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE DATABASE "uwuTube_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE DATABASE "uwuTube_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
