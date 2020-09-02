@@ -33,7 +33,7 @@ const Nav = props => {
       </form>
 
       {/* need dynamic button, logged in then it's our initial */}
-      <Link to="/signin">
+      <Link to="/login">
         <button className="signin">
           <FontAwesomeIcon icon="user-circle" className="user-circle" />
           <span>SIGN IN</span>
