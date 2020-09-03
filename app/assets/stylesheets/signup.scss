@@ -88,7 +88,7 @@ section.signup {
           box-sizing: border-box;
           border-radius: 4px;
           height: 36px;
-          width: 366px;
+          width: 368px;
           padding-left: 12px;
         }
 
@@ -137,12 +137,50 @@ section.signup {
         bottom: 26px;
       }
 
+      div.name-errors, div.pw-errors {
+        display: flex;
+        justify-content: space-between;
+        
+        span {
+          margin-top: -12px;
+          width: 176px;
+          padding: 0;
+        }
+      }
+
+      div.email-errors {
+        span {
+          margin-top: -12px;
+          width: 100%;
+          padding: 0;
+        }
+      }
+
       span.fname-error, span.lname-error, span.email-error, span.password-error,
       span.confirm-error {
-        display: none;
+        visibility: hidden;
+        color: #d93025;
+        font-size: 12px;
+        position: relative;
+        left: 0;
+        pointer-events: auto;
+
+        .exclamation-circle {
+          padding-right: 8px;
+          font-size: 14px;
+        }
+        span {
+          color: #d93025;
+          font-size: 12px;
+          width: 150px;
+          position: relative;
+          left: 24px;
+          top: -2px;
+        }
       }
       
       span.show {
+        visibility: visible;
         display: block;
         color: #d93025;
         font-size: 12px;
@@ -155,6 +193,14 @@ section.signup {
           padding-right: 8px;
           font-size: 14px;
         }
+        span {
+          color: #d93025;
+          font-size: 12px;
+          width: 150px;
+          position: relative;
+          left: 24px;
+          top: -2px;
+        }
       }
 
       p {
@@ -162,22 +208,29 @@ section.signup {
         font-size: 12px;
       }
 
+      p.hidden {
+        display: none;
+      }
+
       div.btns {
         display: flex;
         justify-content: space-between;
         margin-top: 40px;
 
-        button.login {
+        div.login {
           border-radius: 2px;
           color: #2579e9;
+          display: table-cell;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
           font-size: 15px;
           font-weight: 500;
           height: 36px;
           width: 130px;
+          vertical-align: middle;
+          text-align: center;
         }
   
-        button.login:hover {
+        div.login:hover {
           background-color: #f6fafe;
         }
 

@@ -20,7 +20,6 @@ class Signup extends React.Component {
     this.emailError = false;
     this.emailError2 = false;
     this.passwordError = false;
-    // this.confirmError = false;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
@@ -64,6 +63,11 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.fnameError = false;
+    this.lnameError = false;
+    this.emailError = false;
+    this.emailError2 = false;
+    this.passwordError = false;
     if (this.state.password !== this.state.confirm) {
       this.setState({ confirmError : true })
     }
@@ -95,17 +99,6 @@ class Signup extends React.Component {
                   <span className={this.state.fname.length ? "stay" : ""}>
                     First name
                   </span>
-                  <span
-                    className={
-                      this.fnameError ? "show fname-error" : "fname-error"
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon="exclamation-circle"
-                      className="exclamation-circle"
-                    />
-                    Enter first name
-                  </span>
                 </div>
                 <div>
                   <input
@@ -117,39 +110,56 @@ class Signup extends React.Component {
                   <span className={this.state.lname.length ? "stay" : ""}>
                     Last name
                   </span>
-                  <span
-                    className={
-                      this.lnameError ? "show lname-error" : "lname-error"
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon="exclamation-circle"
-                      className="exclamation-circle"
-                    />
-                    Enter last name
-                  </span>
                 </div>
               </div>
-              <div className="email">
-                <input
-                  type="text"
-                  value={this.state.email}
-                  onChange={this.update("email")}
-                  className={this.emailError ? "error" : ""}
-                />
-                <span className={this.state.email.length ? "stay" : ""}>
-                  Your email address
-                </span>
+
+              <div className="name-errors">
                 <span
                   className={
-                    this.emailError ? "show email-error" : "email-error"
+                    this.fnameError ? "show fname-error" : "fname-error"
                   }
                 >
                   <FontAwesomeIcon
                     icon="exclamation-circle"
                     className="exclamation-circle"
                   />
-                  Choose an email address
+                  Enter first name
+                </span>
+                <span
+                  className={
+                    this.lnameError ? "show lname-error" : "lname-error"
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon="exclamation-circle"
+                    className="exclamation-circle"
+                  />
+                  Enter last name
+                </span>
+              </div>
+              <div className="email">
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  className={this.emailError || this.emailError2 ? "error" : ""}
+                />
+                <span className={this.state.email.length ? "stay" : ""}>
+                  Your email address
+                </span>
+              </div>
+              <div className="email-errors">
+                <span
+                  className={
+                    this.emailError || this.emailError2 ? "show email-error" : "email-error"
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon="exclamation-circle"
+                    className="exclamation-circle"
+                  />
+                  {this.emailError ? "Choose an email address" : ""}
+                  {this.emailError2 ? "This email is already in use" : ""}
                 </span>
               </div>
 
@@ -164,19 +174,6 @@ class Signup extends React.Component {
                   <span className={this.state.password.length ? "stay" : ""}>
                     Password
                   </span>
-                  <span
-                    className={
-                      this.passwordError
-                        ? "show password-error"
-                        : "password-error"
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon="exclamation-circle"
-                      className="exclamation-circle"
-                    />
-                    Use 8 characters or more for your password
-                  </span>
                 </div>
                 <div>
                   <input
@@ -188,28 +185,50 @@ class Signup extends React.Component {
                   <span className={this.state.confirm.length ? "stay" : ""}>
                     Confirm
                   </span>
-                  <span
-                    className={
-                      this.state.confirmError ? "show confirm-error" : "confirm-error"
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon="exclamation-circle"
-                      className="exclamation-circle"
-                    />
-                    Those passwords didn't match. Try again.
-                  </span>
                 </div>
               </div>
 
-              <p>
-                Use 8 or more characters with a mix of letters, numbers &
+              <div className="pw-errors">
+                <span
+                  className={
+                    this.passwordError
+                      ? "show password-error"
+                      : "password-error"
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon="exclamation-circle"
+                    className="exclamation-circle"
+                  />
+                  <span>Use 6 characters or more for your password</span>
+                </span>
+                <span
+                  className={
+                    this.state.confirmError
+                      ? "show confirm-error"
+                      : "confirm-error"
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon="exclamation-circle"
+                    className="exclamation-circle"
+                  />
+                  <span>Those passwords didn't match. Try again.</span>
+                </span>
+              </div>
+
+              <p
+                className={
+                  this.passwordError || this.state.confirmError ? "hidden" : ""
+                }
+              >
+                Use 6 or more characters with a mix of letters, numbers &
                 symbols
               </p>
 
               <div className="btns">
-                <Link to="/login">
-                  <button className="login">Sign in instead</button>
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <div className="login">Sign in instead</div>
                 </Link>
                 <button type="submit" className="next">
                   Create
