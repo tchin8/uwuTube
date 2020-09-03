@@ -2,8 +2,7 @@
 
 section.top-nav {
   background-color: #ffffff;
-  // is this position fixed or sticky?
-  position: fixed;
+  position: sticky;
   height: 58px;
   width: 100%;
   display: flex;
@@ -11,7 +10,7 @@ section.top-nav {
   justify-content: space-between;
 
   div.left {
-    margin-left: 18px;
+    margin-left: 22px;
     height: 100%;
     width: 200px;
     display: flex;
@@ -96,27 +95,36 @@ section.top-nav {
     }
   }
   
-  button.signin {
-    border: 1px solid #065fd4;
-    border-radius: 2px;
-    color: #065fd4;
-    font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    height: 40px;
-    width: 105px;
-    margin-right: 18px;
+  
+  button.user-circle {
+    background-color: #c2185b;
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
+    margin-right: 32px;
+  }
+}
 
-    .user-circle {
-      font-size: 24px;
-      position: relative;
-      left: -4px;
-    }
+button.signin {
+  border: 1px solid #065fd4;
+  border-radius: 2px;
+  color: #065fd4;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  height: 40px;
+  width: 105px;
+  margin-right: 18px;
 
-    span {
-      position: relative;
-      bottom: 4px;
-      left: 2px;
-    }
+  .user-circle {
+    font-size: 24px;
+    position: relative;
+    left: -4px;
+  }
+
+  span {
+    position: relative;
+    bottom: 4px;
+    left: 2px;
   }
 }

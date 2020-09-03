@@ -10,6 +10,10 @@ import {
   faSearch,
   faBars,
   faExclamationCircle,
+  faHome,
+  faLayerGroup,
+  faPlayCircle,
+  faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 
@@ -21,6 +25,10 @@ library.add(
   faSearch,
   faBars,
   faExclamationCircle,
+  faHome,
+  faLayerGroup,
+  faPlayCircle,
+  faHistory,
 );
 
 document.addEventListener("DOMContentLoaded", () => {

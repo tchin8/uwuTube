@@ -72,6 +72,7 @@ class Signup extends React.Component {
       this.setState({ confirmError : true })
     }
     this.props.signup(this.state);
+    // .then( fetchUser ??? )
   }
 
   render() {

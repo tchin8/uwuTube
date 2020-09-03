@@ -1,0 +1,80 @@
+section.splash {
+  display: flex;
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+
+  section.left-nav {
+    background-color: #ffffff;
+    height: 100%;
+    width: 280px;
+    // width: 240px;  // supposed to be 240, but it's not ????
+    position: sticky;
+
+    ul {
+      li:first-child {
+        margin-top: 14px;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        width: 100%;
+
+        .icon {
+          color: #606060;
+          font-size: 18px;
+          margin-left: 25px;
+        } 
+        span {
+          color: #030303;
+          font-size: 14px;
+          font-weight: 300;
+          padding-left: 28px;
+        }
+      }
+
+      li:hover {
+        background-color: #f2f2f2;
+        cursor: pointer;
+      }
+
+      li.focus {
+        background-color: #e5e5e5;
+        .icon {
+          color: #ff0000;
+        }
+        span {
+          font-weight: 500;
+        }
+      }
+
+      li.focus:hover {
+        background-color: #d9d9d9;
+      }
+    }
+
+    div.div {
+      border-top: 1px solid #e5e5e5;
+      margin: 10px 0;
+      width: 100%;
+    }
+    
+    div.login {
+      margin: 22px 32px;
+
+      span:first-child {
+        display: block;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  section.main {
+    background-color: #f9f9f9;
+    height: 100vh;
+    // height: 100%;
+    width: 100%;
+  }
+}
