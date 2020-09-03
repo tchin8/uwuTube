@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: user => dispatch(login(user)),
-    fetchUsers: () => {return dispatch(fetchUsers()) }
+    login: user => { return dispatch(login(user)) },
+    fetchUsers: () => { return dispatch(fetchUsers()) }
 })
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
