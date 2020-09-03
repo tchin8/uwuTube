@@ -9,6 +9,11 @@ import {
   faUserCircle,
   faSearch,
   faBars,
+  faExclamationCircle,
+  faHome,
+  faLayerGroup,
+  faPlayCircle,
+  faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 
@@ -19,6 +24,11 @@ library.add(
   faUserCircle,
   faSearch,
   faBars,
+  faExclamationCircle,
+  faHome,
+  faLayerGroup,
+  faPlayCircle,
+  faHistory,
 );
 
 document.addEventListener("DOMContentLoaded", () => {
