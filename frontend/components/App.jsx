@@ -14,7 +14,7 @@ import SignupContainer from './session/signup_container';
 const App = () => (
   <div>
     <Route exact path="/" component={NavContainer} />
-    <Route path="/signin" component={LoginContainer} />
+    <Route path="/login" component={LoginContainer} />
     <AuthRoute path="/signup" component={SignupContainer} />
   </div>
 );

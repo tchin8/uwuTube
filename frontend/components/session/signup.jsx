@@ -7,18 +7,219 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+      confirm: "",
+      confirmError: false,
+    };
 
+    this.fnameError = false;
+    this.lnameError = false;
+    this.emailError = false;
+    this.emailError2 = false;
+    this.passwordError = false;
+    // this.confirmError = false;
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
+
+    /*
+      Enter first name
+      Enter last name
+      Choose an email address
+      This email is already in use
+      Use 8 characters or more for your password
+      Those passwords didn't match. Try again.
+    */
+  }
+
+  handleErrors() {
+    const errors = Array.from(this.props.errors);
+    for (let i = 0; i < errors.length; i++) {
+      const error = errors[i];
+
+      if (error.includes('Fname')) {
+        this.fnameError = true;
+      } else if (error.includes('Lname')) {
+        this.lnameError = true;
+      } else if (error.includes('Email')) {
+        if (error.includes('blank')) {
+          this.emailError = true;
+        } else {
+          this.emailError2 = true;
+        }
+      } else if (error.includes('Password')) {
+        this.passwordError = true;
+      }
     }
   }
 
+  update(field) {
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.password !== this.state.confirm) {
+      this.setState({ confirmError : true })
+    }
+    this.props.signup(this.state);
+  }
+
   render() {
+    const errors = Array.from(this.props.errors);
+    if (errors.length) this.handleErrors();
+
     return (
       <section className="signup">
-        <form className="signup">
-          <span>HELLO!!</span>
+        <form className="signup" onSubmit={this.handleSubmit}>
+          <div className="form-contents">
+            <div className="header">
+              <p>Create your Account</p>
+              <p>to continue to uwuTube</p>
+            </div>
+
+            <div className="main">
+              <div className="row-1">
+                <div>
+                  <input
+                    type="text"
+                    value={this.state.fname}
+                    onChange={this.update("fname")}
+                    className={this.fnameError ? "error" : ""}
+                  />
+                  <span className={this.state.fname.length ? "stay" : ""}>
+                    First name
+                  </span>
+                  <span
+                    className={
+                      this.fnameError ? "show fname-error" : "fname-error"
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon="exclamation-circle"
+                      className="exclamation-circle"
+                    />
+                    Enter first name
+                  </span>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    value={this.state.lname}
+                    onChange={this.update("lname")}
+                    className={this.lnameError ? "error" : ""}
+                  />
+                  <span className={this.state.lname.length ? "stay" : ""}>
+                    Last name
+                  </span>
+                  <span
+                    className={
+                      this.lnameError ? "show lname-error" : "lname-error"
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon="exclamation-circle"
+                      className="exclamation-circle"
+                    />
+                    Enter last name
+                  </span>
+                </div>
+              </div>
+              <div className="email">
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  className={this.emailError ? "error" : ""}
+                />
+                <span className={this.state.email.length ? "stay" : ""}>
+                  Your email address
+                </span>
+                <span
+                  className={
+                    this.emailError ? "show email-error" : "email-error"
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon="exclamation-circle"
+                    className="exclamation-circle"
+                  />
+                  Choose an email address
+                </span>
+              </div>
+
+              <div className="row-3">
+                <div>
+                  <input
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    className={this.passwordError ? "error" : ""}
+                  />
+                  <span className={this.state.password.length ? "stay" : ""}>
+                    Password
+                  </span>
+                  <span
+                    className={
+                      this.passwordError
+                        ? "show password-error"
+                        : "password-error"
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon="exclamation-circle"
+                      className="exclamation-circle"
+                    />
+                    Use 8 characters or more for your password
+                  </span>
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    value={this.state.confirm}
+                    onChange={this.update("confirm")}
+                    className={this.state.confirmError ? "error" : ""}
+                  />
+                  <span className={this.state.confirm.length ? "stay" : ""}>
+                    Confirm
+                  </span>
+                  <span
+                    className={
+                      this.state.confirmError ? "show confirm-error" : "confirm-error"
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon="exclamation-circle"
+                      className="exclamation-circle"
+                    />
+                    Those passwords didn't match. Try again.
+                  </span>
+                </div>
+              </div>
+
+              <p>
+                Use 8 or more characters with a mix of letters, numbers &
+                symbols
+              </p>
+
+              <div className="btns">
+                <Link to="/login">
+                  <button className="login">Sign in instead</button>
+                </Link>
+                <button type="submit" className="next">
+                  Create
+                </button>
+              </div>
+            </div>
+          </div>
         </form>
       </section>
-    )
+    );
   }
 }
 

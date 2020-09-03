@@ -54,15 +54,16 @@ section.top-nav {
       border-bottom: 1px solid #cecece;
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
+      box-sizing: border-box;
       font-size: 16px;
-      height: 30px;
+      height: 32px;
       width: 575px;
       padding: 0;
       padding-left: 14px;
     }
 
     input:focus {
-      border: 1px solid #2166bb;
+      border: 2px solid #2166bb;
     }
 
     input::placeholder {
