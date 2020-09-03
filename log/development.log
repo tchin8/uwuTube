@@ -7246,3 +7246,43 @@ Processing by Api::SessionsController#create as JSON
 Completed 200 OK in 288ms (Views: 5.7ms | ActiveRecord: 4.4ms)
 
 
+Started GET "/" for ::1 at 2020-09-03 17:00:56 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/tiffanychin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 279ms (ActiveRecord: 0.0ms)
+
+
+
+ActionView::Template::Error - Invalid CSS after ">>>>>>> master": expected "{", was "":
+  app/views/layouts/application.html.erb:8:in `view template'
+
+Started POST "/__better_errors/3233eeb22459ae5b/variables" for ::1 at 2020-09-03 17:00:57 -0400
+Started GET "/" for ::1 at 2020-09-03 17:00:59 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+
+ActionView::Template::Error - Invalid CSS after ">>>>>>> master": expected "{", was "":
+  app/views/layouts/application.html.erb:8:in `view template'
+
+Started POST "/__better_errors/24bcaf927dfc0d58/variables" for ::1 at 2020-09-03 17:00:59 -0400
+Started GET "/" for ::1 at 2020-09-03 17:03:11 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/tiffanychin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 0.0ms)
+
+
+
+ActionView::Template::Error - Invalid CSS after ">>>>>>> master": expected "{", was "":
+  app/views/layouts/application.html.erb:8:in `view template'
+
+Started POST "/__better_errors/eaef5ebeffcc02d7/variables" for ::1 at 2020-09-03 17:03:12 -0400
