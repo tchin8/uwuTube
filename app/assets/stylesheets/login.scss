@@ -1,0 +1,309 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .login-border {
+        display: flex;
+        height: 500px;
+        width: 448px;
+        padding: 48px 40px 36px;
+        border: 1px solid rgb(218, 220, 224);
+        border-radius: 10px;
+        align-items: center;
+        flex-direction: column;
+
+        .login-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+        }
+
+        .login-signin {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 24px;
+            padding-top: 16px;
+        }
+
+        .login-signin-two {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            padding-top: 8px;
+
+            .login-email-border {
+                display: flex;
+                border: 1px solid rgb(218, 220, 224);
+                height: 32px;
+                border-radius: 32px;
+                justify-content: space-between;
+                align-items: center;
+
+                .login-user-icon {
+                    padding-left: 8px;
+                    color: rgb(60,64,67);
+                    font-size: 18px;
+                }
+
+                .login-p-email {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: rgb(60,64,67);
+                    padding: 0px 10px;
+                }
+
+                .login-chervon-icon {
+                    color: rgb(60,64,67);
+                    font-size: 13px;
+                    padding-right: 14px;
+                }
+            }
+
+            .login-email-border:hover {
+                cursor: pointer;
+                background-color: rgb(247, 248, 248);
+            }
+        }
+
+        .login-email-wrapper {
+            display: flex;
+            padding-top: 32px;
+            flex-direction: column;
+
+            .login-email {
+                height: 54px;
+                width: 366px;
+                margin-bottom: 9px;
+                position: relative;
+
+
+                input {
+                    border: 1px solid rgb(218, 220, 224);
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    height: 54px;
+                    width: 366px;
+                    padding: 13px 15px;
+                    font-size: 16px;
+                }
+
+                
+                .login-red {
+                    border: 2px solid rgb(215, 50, 45);
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    height: 54px;
+                    width: 366px;
+                    padding: 13px 15px;
+                    font-size: 16px;
+                }
+
+                .login-red:focus {
+                    border: 2px solid rgb(215, 50, 45);
+                }
+
+                .login-red:focus + span {
+                    background-color: white;
+                    color: rgb(215, 50, 45);
+                    font-size: 12px;
+                    bottom: 42px;
+                    transition: font-size 250ms, bottom 250ms;
+                }
+
+                input:focus {
+                    border: 2px solid #1a73e7;
+                }   
+
+                input:focus + span {
+                    background-color: white;
+                    color: #1a73e7;
+                    font-size: 12px;
+                    bottom: 42px;
+                    transition: font-size 250ms, bottom 250ms;
+                }
+
+                span {
+                    color: #616469;
+                    display: block;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 16px;
+                    position: absolute;
+                    bottom: 15px;
+                    left: 13px;
+                    pointer-events: none;
+                    padding: 4px;
+                    transition: font-size 250ms, bottom 250ms;
+                }
+
+                span.stay {
+                    background-color: white;
+                    color: #75787c;
+                    font-size: 12px;
+                    bottom: 42px;
+                }
+
+                .login-text-red {
+                    background-color: white;
+                    font-size: 12px;
+                    bottom: 42px;
+                    color: rgb(215, 50, 45);
+                }
+
+                .login-password-icon {
+                    position: relative;
+                    color: rgb(89, 89, 89);
+                    font-size: 18px;
+                    bottom: 36px;
+                    left: 330px;
+                }
+
+                .login-password-icon:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .login-forgot-email {
+                font-size: 14px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: #1A73E8;
+                font-weight: 500;
+                margin-bottom: 50px;
+            }
+
+            .login-error-wrapper {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-bottom: 10px;
+
+                .login-exclamation-icon {
+                    color: rgb(215, 50, 45);
+                    font-size: 14px;
+                    padding-right: 10px;
+                }
+
+                .login-error-text {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    color: rgb(215, 50, 45);
+                    font-size: 12px;
+                }
+
+                .login-password-error {
+                    padding-right: 8px;
+                }
+            }
+
+            .login-forgot-email:hover {
+                cursor: pointer;
+            }
+            
+            .login-lm-1 {
+                font-size: 14px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: #5F6368;
+                margin-bottom: 3px;
+            }
+
+            .login-lm-2 {
+                font-size: 14px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: #1A73E8;
+                font-weight: 500;
+                margin-bottom: 36px;
+            }
+
+            .login-lm-2:hover {
+                cursor: pointer;
+            }
+
+            .login-create-account-next {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                .login-create-account {
+                    font-size: 14px;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    color: #1A73E8;
+                    font-weight: 500;
+                }
+
+                .login-create-account:hover {
+                    cursor: pointer;
+                }
+
+                .login-next {
+                    width: 90px;
+                    height: 37px;
+                    background-color: #1A73E8;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .login-next-text {
+                        font-size: 14px;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        color: #FFFFFF;
+                        font-weight: 500;
+                    }
+                }
+                
+                .login-next:hover {
+                    cursor: pointer;   
+                }
+            }
+
+            .login-forget-next {
+                margin-top: 28px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                .login-forgot-password {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 139px;
+                    height: 38px;
+
+                    .login-forgot-password-text {
+                                            font-size: 14px;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        color: #1A73E8;
+                        font-weight: 500;
+                    }
+                }
+
+                .login-forgot-password:hover {
+                    background-color: rgb(246, 250, 254);
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+
+                .login-next {
+                    width: 90px;
+                    height: 37px;
+                    background-color: #1A73E8;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .login-next-text {
+                        font-size: 14px;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        color: #FFFFFF;
+                        font-weight: 500;
+                    }
+                }
+                
+                .login-next:hover {
+                    cursor: pointer;   
+                }
+            }
+        }
+    }
+}
