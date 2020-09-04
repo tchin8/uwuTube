@@ -16,5 +16,5 @@ class Video < ApplicationRecord
     class_name: :User,
     foreign_key: :user_id 
 
-  has_one_attached :video
+  has_one_attached :vid
 end
