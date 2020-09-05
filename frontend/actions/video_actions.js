@@ -8,7 +8,7 @@ export const receiveVideo = video => ({
   video
 });
 
-export const removeVideo = videoIf => ({
+export const removeVideo = videoId => ({
   type: REMOVE_VIDEO,
   videoId
 });
