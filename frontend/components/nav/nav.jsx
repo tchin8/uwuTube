@@ -5,7 +5,6 @@ import {
   Switch,
   Link
 } from 'react-router-dom';
-import { withRouter } from 'react-router-dom'; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Nav extends React.Component {
@@ -18,9 +17,11 @@ class Nav extends React.Component {
   }
 
   render() {
-    let signInOrLoggedIn = this.state.currentUser ? 
+    let { currentUser } = this.state;
+
+    let signInOrLoggedIn = currentUser ? 
       <button className="user-circle" onClick={this.props.logout}>
-        {/* after fetch user, get user's first initial fname[0].toUpperCase() */}
+        <span>{currentUser.fname[0].toUpperCase()}</span>
       </button> : 
       <Link to="/login">
         <button className="signin">
@@ -51,7 +52,14 @@ class Nav extends React.Component {
           </button>
         </form>
   
-        {signInOrLoggedIn}
+        <div className="right">
+          <div className="upload">
+            {/* onClick open modal */}
+            <FontAwesomeIcon icon="video" className="video" />
+            <FontAwesomeIcon icon="plus" className="plus" />
+          </div>
+          {signInOrLoggedIn}
+        </div>
       </section>
     );
   }
