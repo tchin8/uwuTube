@@ -14,6 +14,9 @@ import {
   faLayerGroup,
   faPlayCircle,
   faHistory,
+  faVideo,
+  faPlus,
+  
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 
@@ -29,6 +32,9 @@ library.add(
   faLayerGroup,
   faPlayCircle,
   faHistory,
+  faVideo,
+  faPlus,
+  
 );
 
 document.addEventListener("DOMContentLoaded", () => {
