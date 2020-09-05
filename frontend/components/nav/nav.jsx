@@ -14,22 +14,45 @@ class Nav extends React.Component {
     this.state = {
       currentUser: props.currentUser,
     }
+
   }
 
   render() {
     let { currentUser } = this.state;
+    let { openModal } = this.props;
 
-    let signInOrLoggedIn = currentUser ? 
-      <button className="user-circle" onClick={this.props.logout}>
-        <span>{currentUser.fname[0].toUpperCase()}</span>
-      </button> : 
-      <Link to="/login">
-        <button className="signin">
-          <FontAwesomeIcon icon="user-circle" className="user-circle" />
-          <span>SIGN IN</span>
+    let signInOrLoggedIn, logInOrUpload;
+    if (currentUser) {
+      signInOrLoggedIn = (
+        <button className="user-circle" onClick={this.props.logout}>
+          <span>{currentUser.fname[0].toUpperCase()}</span>
         </button>
-      </Link>
-  
+      )
+      
+      logInOrUpload = (
+        <div className="upload" onClick={() => openModal('Upload Video')}>
+          <FontAwesomeIcon icon="video" className="video" />
+          <FontAwesomeIcon icon="plus" className="plus" />
+        </div>
+      )
+    } else {
+      signInOrLoggedIn = (
+        <Link to="/login">
+          <button className="signin">
+            <FontAwesomeIcon icon="user-circle" className="user-circle" />
+            <span>SIGN IN</span>
+          </button>
+        </Link>
+      )
+
+      logInOrUpload = (
+        <Link to="/login" className="upload">
+          <FontAwesomeIcon icon="video" className="video" />
+          <FontAwesomeIcon icon="plus" className="plus" />
+        </Link>
+      )
+    }
+
     return (
       <section className="top-nav">
         <div className="left">
@@ -53,11 +76,7 @@ class Nav extends React.Component {
         </form>
   
         <div className="right">
-          <div className="upload">
-            {/* onClick open modal */}
-            <FontAwesomeIcon icon="video" className="video" />
-            <FontAwesomeIcon icon="plus" className="plus" />
-          </div>
+          {logInOrUpload}
           {signInOrLoggedIn}
         </div>
       </section>
