@@ -1,25 +1,15 @@
 import React from 'react';
-import CreatePostFormContainer from '../posts/create_post_form_container';
-import EditPostFormContainer from '../posts/edit_post_form_container';
-import DownDropdown from '../navbar/down_dropdown';
-import EditProfileFormContainer from '../profile/edit_profile_form_container';
+import VideoFormContainer from './video_form_container';
 
-function Modal({ currentUser, user, modal, closeModal }) {
+function Modal({ currentUser, modal, closeModal }) {
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
-    case 'Create Post':
-      component = <CreatePostFormContainer
-        currentUser={currentUser}
-        user={user} />;
-      break;
-    case 'Edit Post':
-      component = <EditPostFormContainer />;
-      break;
-    case 'Edit Profile':
-      component = <EditProfileFormContainer />;
+    case 'Upload Video':
+      component = <VideoFormContainer
+        currentUser={currentUser}/>;
       break;
     default:
       return null;
