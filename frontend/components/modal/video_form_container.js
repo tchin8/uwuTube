@@ -7,6 +7,7 @@ import { createVideo } from '../../actions/video_actions';
 import VideoForm from './video_form';
 
 const mSTP = state => ({
+  currentUser: state.entities.users[state.session.id],
   formType: 'Upload Video'
 });
 
