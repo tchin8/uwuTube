@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:index, :create, :show, :update] do 
+      # then videos index to be displayed on user's profile?
     end 
     resource :session, only: [:create, :destroy]
 
