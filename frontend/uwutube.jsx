@@ -16,6 +16,10 @@ import {
   faHistory,
   faVideo,
   faPlus,
+  faTimes,
+  faCommentAlt,
+  faExclamation,
+  faUpload,
   
 } from "@fortawesome/free-solid-svg-icons";
 // import {
@@ -34,6 +38,10 @@ library.add(
   faHistory,
   faVideo,
   faPlus,
+  faTimes,
+  faCommentAlt,
+  faExclamation,
+  faUpload,
   
 );
 
