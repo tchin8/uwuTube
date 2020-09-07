@@ -12,12 +12,14 @@ import LoginContainer from './session/login_form_container';
 import SignupContainer from './session/signup_container';
 import SplashContainer from './splash/splash_container';
 import ModalContainer from './modal/modal_container';
+import VideoContainer from './videos/video_container';
 
 const App = () => (
   <div>
     <Route path="/" component={ModalContainer} />
     <Route exact path="/" component={NavContainer} />
     <Route exact path="/" component={SplashContainer} />
+    <Route path="/videos/:videoId" component={VideoContainer} /> 
     <AuthRoute path="/signup" component={SignupContainer} />
     <AuthRoute path="/login" component={LoginContainer} />
   </div>
