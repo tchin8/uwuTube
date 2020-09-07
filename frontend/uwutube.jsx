@@ -20,6 +20,7 @@ import {
   faCommentAlt,
   faExclamation,
   faUpload,
+  faExclamationTriangle,
   
 } from "@fortawesome/free-solid-svg-icons";
 // import {
@@ -42,6 +43,7 @@ library.add(
   faCommentAlt,
   faExclamation,
   faUpload,
+  faExclamationTriangle,
   
 );
 

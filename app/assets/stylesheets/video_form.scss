@@ -6,7 +6,7 @@ div.upload-video-form {
   min-height: 500px;
   width: 960px;
 
-  div.header {
+  div.p1 > div.header, div.p2 > div.header {
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
@@ -55,7 +55,7 @@ div.upload-video-form {
     }
   }
 
-  div.main {
+  div.p1 > div.main {
     height: 50vh;
     width: 100%;
     display: flex;
@@ -94,6 +94,18 @@ div.upload-video-form {
       }
     }
 
+    div.file-error {
+      margin-top: 20px; 
+
+      .exclamation-triangle {
+        color: #cd0200;
+      }
+      span {
+        font-size: 13px;
+        padding-left: 15px;
+      }
+    }
+
     button {
       background-color: #0a5ed4;
       border-radius: 2px;
@@ -105,7 +117,7 @@ div.upload-video-form {
     }
   }
 
-  div.footer {
+  div.p1 > div.footer {
     color: #848484;
     font-size: 11px;
     text-align: center;
@@ -116,6 +128,62 @@ div.upload-video-form {
 
       span {
         color: #0a5ed4;
+      }
+    }
+  }
+
+  div.p2 {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    div.main {
+      overflow-y: auto;
+    }
+
+    div.footer {
+      border-top: 1px solid #e0e0e0;
+      height: 52px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div.left {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+
+        span:first-child {
+          display: inline-block;
+          background-color: #085fd4;
+          border-radius: 2px;
+          color: #ffffff;
+          font-size: 10px;
+          font-weight: bolder;
+          height: 18px;
+          width: 18px;
+          text-align: center;
+          line-height: 1.7;
+        }
+
+        span:last-child {
+          color: #737373;
+          padding-left: 22px;
+          font-size: 12px;
+        }
+      }
+
+      button {
+        background-color: #085fd4;
+        border-radius: 2px;
+        color: #ffffff;
+        font-size: 16px;
+        height: 38px;
+        width: 68px;
+        margin-right: 10px;
       }
     }
   }
