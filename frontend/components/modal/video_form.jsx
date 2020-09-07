@@ -10,7 +10,6 @@ class VideoForm extends React.Component {
       title: "",
       description: "",
       vid: null,
-      vidName: null,
       vidUrl: null,
       validFile: null,
     }
@@ -44,7 +43,7 @@ class VideoForm extends React.Component {
       reader.onloadend = () => {
         this.setState({ 
           vid: file,
-          vidName: fileName, 
+          title: fileName,
           vidUrl: reader.result,
           validFile: true,
         });
@@ -59,6 +58,12 @@ class VideoForm extends React.Component {
       //
       this.setState({ validFile: false });
     }
+  }
+
+  update(field) {
+    return (e) => (
+      this.setState({ [field]: e.currentTarget.value })
+    );
   }
 
   render() {
@@ -113,7 +118,7 @@ class VideoForm extends React.Component {
       uploadVideoPage = (
         <div className="p2">
           <div className="header">
-            <span>{this.state.vidName}</span>
+            <span>{this.state.title}</span>
             <div className="icons">
               <div>
                 <FontAwesomeIcon icon="comment-alt" className="comment-alt" />
@@ -124,7 +129,21 @@ class VideoForm extends React.Component {
           </div>
 
           <div className="main">
-            
+            <div className="left">
+              <span className="sub-header">Details</span>
+              <input type="text"
+                value={this.state.title}
+                onChange={this.update('title')} />
+              {/* input has 100 char limit on focus (for ex, '5/100') should also be span? position: absolute it?*/}
+              <textarea value={this.state.description}
+                onChange={this.update('body')}
+                placeholder="Tell viewers about your video">
+                {/* <span> 5000 char count onfocus (for ex, '0/5000') </span> */}
+              </textarea>
+            </div>
+            <div className="right">
+              {/* for the video preview */}
+            </div>
           </div>
 
           <div className="footer">
@@ -140,31 +159,7 @@ class VideoForm extends React.Component {
 
     return (
       <div className="upload-video-form">
-        {/* {uploadVideoPage} */}
-        <div className="p2">
-          <div className="header">
-            <span></span>
-            <div className="icons">
-              <div>
-                <FontAwesomeIcon icon="comment-alt" className="comment-alt" />
-                <FontAwesomeIcon icon="exclamation" className="exclamation" />
-              </div>
-              <FontAwesomeIcon icon="times" className="times" onClick={() => closeModal()} />
-            </div>
-          </div>
-
-          <div className="main">
-
-          </div>
-
-          <div className="footer">
-            <div className="left">
-              <span>HD</span>
-              <span>Finished processing</span>
-            </div>
-            <button>SAVE</button>
-          </div>
-        </div>
+        {uploadVideoPage}
       </div>
     )
   }
