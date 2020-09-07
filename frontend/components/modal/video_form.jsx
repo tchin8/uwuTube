@@ -159,7 +159,64 @@ class VideoForm extends React.Component {
 
     return (
       <div className="upload-video-form">
-        {uploadVideoPage}
+        {/* {uploadVideoPage} */}
+        <div className="p2">
+          <div className="header">
+            <span>{this.state.title}</span>
+            <div className="icons">
+              <div>
+                <FontAwesomeIcon icon="comment-alt" className="comment-alt" />
+                <FontAwesomeIcon icon="exclamation" className="exclamation" />
+              </div>
+              <FontAwesomeIcon icon="times" className="times" onClick={() => closeModal()} />
+            </div>
+          </div>
+
+          <div className="main">
+            <div className="left">
+              <span className="sub-header">Details</span>
+              <div className="info">
+                <textarea value={this.state.title}
+                  onChange={this.update('title')}
+                  placeholder="Add a title that describes your video">
+                </textarea>
+                <span className="type">Title (required)</span>
+                <span className="chars-left">{this.state.title.length}/100</span>
+              </div>
+              <div className="info">
+                <textarea value={this.state.description}
+                  onChange={this.update('description')}
+                  placeholder="Tell viewers about your video"
+                  className="description">
+                </textarea>
+                <span className="type">Description (required)</span>
+                <span className="chars-left">{this.state.description.length}/5000</span>
+              </div>
+              <div className='guidelines'>
+                <span>Before you publish, check the following:</span>
+                <div>
+                  <span>Do kids appear in this video?</span>
+                  <span>Make sure you follow our policies to protect minors from harm, exploitation, bullying, and violations of labor law.</span>
+                </div>
+                <div>
+                  <span>Looking for overall content guidance?</span>
+                  <span>Our Community Guidelines can help you avoid trouble and ensure that YouTube remains a safe and vibrant community.</span>
+                </div>
+              </div>
+            </div>
+            <div className="right">
+              {/* for the video preview */}
+            </div>
+          </div>
+
+          <div className="footer">
+            <div className="left">
+              <span>HD</span>
+              <span>Finished processing</span>
+            </div>
+            <button disabled={this.state.title.length === 0 || this.state.description.length === 0}>SAVE</button>
+          </div>
+        </div>
       </div>
     )
   }
