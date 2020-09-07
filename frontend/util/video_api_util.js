@@ -7,7 +7,7 @@ export const fetchVideo = videoId => (
 export const createVideo = formData => (
   $.ajax({
     url: `/api/videos`,
-    method: 'video',
+    method: 'post',
     data: formData,
     contentType: false,
     processData: false

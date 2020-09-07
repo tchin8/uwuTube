@@ -17,6 +17,7 @@ class VideoForm extends React.Component {
     }
 
     this.validateFileType = this.validateFileType.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleUploadVideoClick() {
@@ -68,6 +69,20 @@ class VideoForm extends React.Component {
     return (e) => (
       this.setState({ [field]: e.currentTarget.value })
     );
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.closeModal();
+
+    const formData = new FormData();
+
+    formData.append('video[user_id]', this.state.user_id);
+    formData.append('video[title]', this.state.title);
+    formData.append('video[description]', this.state.description);
+    formData.append('video[vid]', this.state.vid);
+
+    this.props.createVideo(formData);
   }
 
   render() {
@@ -153,19 +168,18 @@ class VideoForm extends React.Component {
                 <span className="chars-left">{this.state.description.length}/5000</span>
               </div>
               <div className='guidelines'>
-                <span>Before you publish, check the following:</span>
+                <span className="sub-header">Before you publish, check the following:</span>
                 <div>
                   <span>Do kids appear in this video?</span>
                   <span>Make sure you follow our policies to protect minors from harm, exploitation, bullying, and violations of labor law.</span>
                 </div>
                 <div>
                   <span>Looking for overall content guidance?</span>
-                  <span>Our Community Guidelines can help you avoid trouble and ensure that YouTube remains a safe and vibrant community.</span>
+                  <span>Our Community Guidelines can help you avoid trouble and ensure that uwuTube remains a safe and vibrant community.</span>
                 </div>
               </div>
             </div>
             <div className="right">
-              {/* for the video preview */}
               <video className='preview' controls>
                 <source src={this.state.vidUrl} type={this.state.mimeType} />
                 Your browser does not support HTML5 video.
@@ -179,7 +193,8 @@ class VideoForm extends React.Component {
               <span>HD</span>
               <span>Finished processing</span>
             </div>
-            <button disabled={!this.state.title.length || !this.state.description.length}>SAVE</button>
+            <button onClick={this.handleSubmit}
+              disabled={!this.state.title.length || !this.state.description.length}>SAVE</button>
           </div>
         </div>
       )
