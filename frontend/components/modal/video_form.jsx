@@ -12,6 +12,8 @@ class VideoForm extends React.Component {
       vid: null,
       vidUrl: null,
       validFile: null,
+      mimeType: null,
+      fileName: null,
     }
 
     this.validateFileType = this.validateFileType.bind(this);
@@ -46,6 +48,8 @@ class VideoForm extends React.Component {
           title: fileName,
           vidUrl: reader.result,
           validFile: true,
+          mimeType: fileType,
+          fileName: file.name,
         });
       }
 
@@ -131,50 +135,6 @@ class VideoForm extends React.Component {
           <div className="main">
             <div className="left">
               <span className="sub-header">Details</span>
-              <input type="text"
-                value={this.state.title}
-                onChange={this.update('title')} />
-              {/* input has 100 char limit on focus (for ex, '5/100') should also be span? position: absolute it?*/}
-              <textarea value={this.state.description}
-                onChange={this.update('body')}
-                placeholder="Tell viewers about your video">
-                {/* <span> 5000 char count onfocus (for ex, '0/5000') </span> */}
-              </textarea>
-            </div>
-            <div className="right">
-              {/* for the video preview */}
-            </div>
-          </div>
-
-          <div className="footer">
-            <div className="left">
-              <span>HD</span>
-              <span>Finished processing</span>
-            </div>
-            <button>SAVE</button>
-          </div>
-        </div>
-      )
-    }
-
-    return (
-      <div className="upload-video-form">
-        {/* {uploadVideoPage} */}
-        <div className="p2">
-          <div className="header">
-            <span>{this.state.title}</span>
-            <div className="icons">
-              <div>
-                <FontAwesomeIcon icon="comment-alt" className="comment-alt" />
-                <FontAwesomeIcon icon="exclamation" className="exclamation" />
-              </div>
-              <FontAwesomeIcon icon="times" className="times" onClick={() => closeModal()} />
-            </div>
-          </div>
-
-          <div className="main">
-            <div className="left">
-              <span className="sub-header">Details</span>
               <div className="info">
                 <textarea value={this.state.title}
                   onChange={this.update('title')}
@@ -206,6 +166,11 @@ class VideoForm extends React.Component {
             </div>
             <div className="right">
               {/* for the video preview */}
+              <video className='preview' controls>
+                <source src={this.state.vidUrl} type={this.state.mimeType} />
+                Your browser does not support HTML5 video.
+              </video>
+              <span>{this.state.fileName}</span>
             </div>
           </div>
 
@@ -214,9 +179,15 @@ class VideoForm extends React.Component {
               <span>HD</span>
               <span>Finished processing</span>
             </div>
-            <button disabled={this.state.title.length === 0 || this.state.description.length === 0}>SAVE</button>
+            <button disabled={!this.state.title.length || !this.state.description.length}>SAVE</button>
           </div>
         </div>
+      )
+    }
+
+    return (
+      <div className="upload-video-form">
+        {uploadVideoPage}
       </div>
     )
   }
