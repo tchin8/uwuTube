@@ -7,9 +7,9 @@ section.splash {
   section.left-nav {
     background-color: #ffffff;
     height: 100%;
-    width: 280px;
-    // width: 240px;  // supposed to be 240, but it's not ????
-    position: sticky;
+    width: 240px;
+    position: fixed;
+    top: 58px;
 
     ul {
       li:first-child {
@@ -94,5 +94,6 @@ section.splash {
     height: 100vh;
     // height: 100%;
     width: 100%;
+    margin: 58px 0 0 240px;
   }
 }
