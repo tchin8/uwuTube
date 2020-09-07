@@ -21,7 +21,10 @@ import {
   faExclamation,
   faUpload,
   faExclamationTriangle,
-  
+  faFire,
+  faThumbsUp,
+  faClock,
+  faCloudUploadAlt
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 
@@ -44,7 +47,10 @@ library.add(
   faExclamation,
   faUpload,
   faExclamationTriangle,
-  
+  faFire,
+  faThumbsUp,
+  faClock,
+  faCloudUploadAlt
 );
 
 document.addEventListener("DOMContentLoaded", () => {

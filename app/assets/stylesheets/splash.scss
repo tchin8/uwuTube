@@ -26,6 +26,23 @@ section.splash {
           font-size: 18px;
           margin-left: 25px;
         } 
+        .icon.trending {
+          padding-left: 2px;
+        }
+        .trending + span {
+          padding-left: 30px;
+        }
+
+        .icon.cloud {
+          font-size:16px;
+        }
+        .icon.cloud + span {
+          padding-left: 26px;
+        }
+        .icon.home + span {
+          padding-left: 27px;
+        }
+
         span {
           color: #030303;
           font-size: 14px;
