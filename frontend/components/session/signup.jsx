@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Redirect, Switch, Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 
 class Signup extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Signup extends React.Component {
       password: "",
       confirm: "",
       confirmError: false,
+      inputPassword: "password",
     };
 
     this.fnameError = false;
@@ -23,6 +26,7 @@ class Signup extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
+    this.showPassword = this.showPassword.bind(this);
 
     /*
       Enter first name
@@ -39,17 +43,17 @@ class Signup extends React.Component {
     for (let i = 0; i < errors.length; i++) {
       const error = errors[i];
 
-      if (error.includes('Fname')) {
+      if (error.includes("Fname")) {
         this.fnameError = true;
-      } else if (error.includes('Lname')) {
+      } else if (error.includes("Lname")) {
         this.lnameError = true;
-      } else if (error.includes('Email')) {
-        if (error.includes('blank')) {
+      } else if (error.includes("Email")) {
+        if (error.includes("blank")) {
           this.emailError = true;
         } else {
           this.emailError2 = true;
         }
-      } else if (error.includes('Password')) {
+      } else if (error.includes("Password")) {
         this.passwordError = true;
       }
     }
@@ -69,15 +73,30 @@ class Signup extends React.Component {
     this.emailError2 = false;
     this.passwordError = false;
     if (this.state.password !== this.state.confirm) {
-      this.setState({ confirmError : true })
+      this.setState({ confirmError: true });
     }
     this.props.signup(this.state);
     // .then( fetchUser ??? )
   }
 
+  showPassword() {
+    if (this.state.inputPassword === "password") {
+      this.setState({ inputPassword: "text" });
+    } else {
+      this.setState({ inputPassword: "password" });
+    }
+  }
+
   render() {
     const errors = Array.from(this.props.errors);
     if (errors.length) this.handleErrors();
+
+    let passwordIcon;    
+    if (this.state.inputPassword === 'password') {
+        passwordIcon = <FontAwesomeIcon className="login-password-icon" icon={faEye} onClick={this.showPassword} />
+    } else {
+        passwordIcon = <FontAwesomeIcon className="login-password-icon" icon={faEyeSlash} onClick={this.showPassword} />
+    }
 
     return (
       <section className="signup">
@@ -152,7 +171,9 @@ class Signup extends React.Component {
               <div className="email-errors">
                 <span
                   className={
-                    this.emailError || this.emailError2 ? "show email-error" : "email-error"
+                    this.emailError || this.emailError2
+                      ? "show email-error"
+                      : "email-error"
                   }
                 >
                   <FontAwesomeIcon
@@ -167,7 +188,7 @@ class Signup extends React.Component {
               <div className="row-3">
                 <div>
                   <input
-                    type="password"
+                    type={this.state.inputPassword}
                     value={this.state.password}
                     onChange={this.update("password")}
                     className={this.passwordError ? "error" : ""}
@@ -178,7 +199,7 @@ class Signup extends React.Component {
                 </div>
                 <div>
                   <input
-                    type="password"
+                    type={this.state.inputPassword}
                     value={this.state.confirm}
                     onChange={this.update("confirm")}
                     className={this.state.confirmError ? "error" : ""}
@@ -187,6 +208,7 @@ class Signup extends React.Component {
                     Confirm
                   </span>
                 </div>
+                {passwordIcon}
               </div>
 
               <div className="pw-errors">

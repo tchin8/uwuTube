@@ -32,7 +32,7 @@ section.signup {
     }
 
     div.main {
-      div.row-1, div.row-3 {
+      div.row-1 {
         display: flex;
         justify-content: space-between;
         margin-bottom: 24px;
@@ -74,6 +74,61 @@ section.signup {
             bottom: 26px;
             transition: font-size 250ms, bottom 250ms;
           }
+        }
+      }
+
+      div.row-3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        div {
+          height: 36px;
+          width: 152px;
+          position: relative;
+
+          input {
+            border: 1px solid rgb(218, 220, 224);
+            border-radius: 4px;
+            box-sizing: border-box;
+            height: 36px;
+            width: 152px;
+            padding-left: 12px;
+          }
+
+          input:focus {
+            border: 2px solid #1a73e7;
+          }
+
+          input:focus + span {
+            background-color: white;
+            color: #1a73e7;
+            font-size: 10px;
+            bottom: 26px;
+            transition: font-size 250ms, bottom 250ms;
+          }
+
+          input.error {
+            border: 2px solid #d93025;
+          }
+
+          input.error:focus + span {
+            background-color: white;
+            color: #d93025;
+            font-size: 10px;
+            bottom: 26px;
+            transition: font-size 250ms, bottom 250ms;
+          }
+        }
+
+        .login-password-icon {
+          font-size: 20px;
+          color: rgb(90, 90, 90);
+        }
+
+        .login-password-icon:hover {
+          cursor: pointer;
         }
       }
 

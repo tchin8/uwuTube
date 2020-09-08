@@ -90,8 +90,8 @@ class VideoForm extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     const { closeModal } = this.props;
-
     const wrongFileType = this.state.validFile === false ? 
       <div className='file-error'>
         <FontAwesomeIcon icon="exclamation-triangle" className="exclamation-triangle" />
