@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect, Switch, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class VideoForm extends React.Component {
@@ -82,7 +83,8 @@ class VideoForm extends React.Component {
     formData.append('video[description]', this.state.description);
     formData.append('video[vid]', this.state.vid);
 
-    this.props.createVideo(formData);
+    this.props.createVideo(formData)
+      .then(video => <Redirect to={`/videos/${video.id}`} />);
   }
 
   render() {

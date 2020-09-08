@@ -5,7 +5,7 @@ import Video from "./video";
 
 const mSTP = (state, ownProps) => ({
   currentUser: state.session.id,
-  video: state.entities.videos[ownProps.match.params.videoId],
+  video: state.videos[ownProps.match.params.videoId],
 });
 
 const mDTP = dispatch => ({
@@ -14,4 +14,4 @@ const mDTP = dispatch => ({
   // logout: (user) => dispatch(logout(user)),
 });
 
-export default connect(mSTP, mDTP)(Video);
+export default connect(mSTP, null)(Video);
