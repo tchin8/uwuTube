@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Video from "./video";
-// import { login, signup, logout } from "../../actions/session_actions";
+import { fetchVideo } from "../../actions/video_actions";
 
 const mSTP = (state, ownProps) => ({
   currentUser: state.session.id,
@@ -9,9 +9,7 @@ const mSTP = (state, ownProps) => ({
 });
 
 const mDTP = dispatch => ({
-  // login: (user) => dispatch(login(user)),
-  // signup: (user) => dispatch(signup(user)),
-  // logout: (user) => dispatch(logout(user)),
+  fetchVideo: videoId => dispatch(fetchVideo(videoId)),
 });
 
-export default connect(mSTP, null)(Video);
+export default connect(mSTP, mDTP)(Video);

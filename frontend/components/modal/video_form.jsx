@@ -83,8 +83,10 @@ class VideoForm extends React.Component {
     formData.append('video[description]', this.state.description);
     formData.append('video[vid]', this.state.vid);
 
-    this.props.createVideo(formData)
-      .then(video => <Redirect to={`/videos/${video.id}`} />);
+    this.props.createVideo(formData);
+
+    // this redirect isn't working, maybe set state, then redirect? 
+      // .then(video => <Redirect to={`/videos/${video.id}`} />);
   }
 
   render() {
