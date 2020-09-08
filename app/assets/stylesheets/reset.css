@@ -35,3 +35,8 @@ button {
 button:focus, input:focus, textarea:focus {
 	outline: 0;
 }
+
+video {
+	border: none;
+	outline: none;
+}

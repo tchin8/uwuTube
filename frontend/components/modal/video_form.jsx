@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect, Switch, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class VideoForm extends React.Component {
@@ -83,6 +84,9 @@ class VideoForm extends React.Component {
     formData.append('video[vid]', this.state.vid);
 
     this.props.createVideo(formData);
+
+    // this redirect isn't working, maybe set state, then redirect? 
+      // .then(video => <Redirect to={`/videos/${video.id}`} />);
   }
 
   render() {

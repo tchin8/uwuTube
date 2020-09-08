@@ -1,0 +1,42 @@
+section.video-show {
+  section.main {
+    padding-top: 58px; 
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+
+    div.left {
+      margin: 24px 0 0 42px;
+      width: calc(100vw - 510px);
+
+      div.video-container {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        height: calc((100vw - 510px) * 0.5625);
+        width: calc(100vw - 510px);
+
+        video {
+          height: 100%;
+        }
+      }
+    }
+
+    div.right {
+      min-height: 100%;
+      width: 402px;
+      margin: 24px 42px 0 0;
+
+      span {
+        // remove later, just for sizing
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        height: 200px;
+        border: 1px solid red;
+      }
+    }
+  }
+}
