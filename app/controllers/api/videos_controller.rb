@@ -1,5 +1,7 @@
 class Api::VideosController < ApplicationController
-  #index ? like on the users profile? 
+  def index
+    @videos = Video.all
+  end
 
   def create 
     @video = Video.new(video_params)

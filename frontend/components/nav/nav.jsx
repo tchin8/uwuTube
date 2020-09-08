@@ -14,7 +14,11 @@ class Nav extends React.Component {
     this.state = {
       currentUser: props.currentUser,
     }
+  }
 
+  componentDidMount() {
+    this.props.fetchUsers()
+      .then(() => this.props.fetchVideos());
   }
 
   render() {
