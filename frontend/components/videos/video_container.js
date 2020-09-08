@@ -4,6 +4,7 @@ import Video from "./video";
 import { fetchVideo } from "../../actions/video_actions";
 
 const mSTP = (state, ownProps) => ({
+  users: state.entities.users,
   currentUser: state.entities.users[state.session.id],
   video: state.videos[ownProps.match.params.videoId],
 });

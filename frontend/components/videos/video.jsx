@@ -7,7 +7,6 @@ import NavContainer from '../nav/nav_container'
 class Video extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   componentDidMount() {
@@ -38,8 +37,9 @@ class Video extends React.Component {
   }
 
   render() {
-    const { video } = this.props;
+    const { video, users } = this.props;
     if (!video) return null;
+    let uploader = users[video.user_id];
 
     return (
       <section className="video-show">
@@ -56,6 +56,23 @@ class Video extends React.Component {
                 <span className='title'>{video.title}</span>
                 <span>0 views • {this.dateUploaded(video.created_at)}</span>
                 {/* make dynamic views later when add views column */}
+              </div>
+
+              <div className='row-2'>
+                <div className='col-thumbnail'>
+                  <div className='user-circle'>
+                    <span>{uploader.fname[0].toUpperCase()}</span>
+                  </div>
+                </div>
+                <div className='col-info'>
+                  <span className='name'>{uploader.fname} {uploader.lname}</span>
+                  <span>0 subscribers</span>
+                  {/* make dynamic subs later */}
+                  <p>{video.description}</p>
+                </div>
+
+                <button>SUBSCRIBE</button>
+                {/* make this button functional */}
               </div>
             </div>
 
