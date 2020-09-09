@@ -13,6 +13,11 @@ class Splash extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   this.props.fetchUsers();
+  //   this.props.fetchVideos();
+  // }
+
   render() {
     let moreSelectionsOrLogIn;
     if (!this.state.currentUser) {

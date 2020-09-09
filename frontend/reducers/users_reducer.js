@@ -17,7 +17,6 @@ const usersReducer = (state = {}, action) => {
       return Object.assign({}, state, { [action.user.id]: action.user });
 
     case RECEIVE_VIDEO:
-      // debugger;
       if (!newState[action.video.user_id]['videos']) newState[action.video.user_id]['videos'] = [];
       newState[action.video.user_id]['videos'].push(action.video);
       return newState;
