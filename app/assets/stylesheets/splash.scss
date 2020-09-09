@@ -100,14 +100,15 @@ section.splash {
     ul.videos {
       display: flex;
       // display: grid;
-      grid-gap: 16px;
+      // grid-gap: 16px;
       // grid-template-columns: repeat(4, 1fr);
       // // grid-template-columns: repeat(auto-fill, 360px);
-      margin: 25px;
+      margin: 25px 16px;
 
       li.each-video {
         width: 300px;
         height: 300px;
+        padding: 0 9px;
 
         div.video-container {
           background-color: black;
@@ -127,6 +128,7 @@ section.splash {
           display: flex;
           height: 65px;
           width: 100%;
+          margin-top: 15px;
 
           div.user-circle {
             background-color: #c2185b;
@@ -139,24 +141,27 @@ section.splash {
               font-size: 20px;
               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
               position: relative;
-              // top: 7px;
-              // left: 17px;
+              top: 7px;
+              left: 12px;
             }
           }
 
           div.info {
+            margin-left: 15px;
+            padding-top: 4px;
+            color: #606060;;
 
-            span{
+            span {
               display: block;
+              font-size: 14px;
+              line-height: 1.2;
             }
             span.title {
-
-            }
-            span.uploader {
-
-            }
-            span:last-child {
-
+              color: #000000;
+              font-size: 16px;
+              font-weight: bold;
+              line-height: 1.5;
+              padding-bottom: 6px;
             }
           }
         }
