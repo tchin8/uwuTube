@@ -17,8 +17,10 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUsers()
-      .then(() => this.props.fetchVideos());
+    if (this.props.match) {
+      this.props.fetchUsers()
+        .then(() => this.props.fetchVideos());
+    }
   }
 
   render() {

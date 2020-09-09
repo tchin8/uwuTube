@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
 import Nav from './nav';
+import { fetchUsers } from '../../actions/user_actions';
 import { fetchVideos } from '../../actions/video_actions';
 import { login, signup, logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
-import { fetchUsers } from '../../actions/user_actions';
 
 const mSTP = state => ({
   currentUser: state.entities.users[state.session.id],

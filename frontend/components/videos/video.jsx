@@ -10,7 +10,9 @@ class Video extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchVideo(this.props.match.params.videoId);
+    this.props.fetchUsers()
+      .then(() => this.props.fetchVideos())
+      // .then(() => this.props.fetchVideo(this.props.match.params.videoId));
   }
 
   dateUploaded(datetime) {
