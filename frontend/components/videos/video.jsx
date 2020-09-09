@@ -50,7 +50,6 @@ class Video extends React.Component {
           <div className="left">
             <div className='video-container'>
               <video src={video.videoUrl} controls>
-
               </video>
             </div>
             <div className="info">

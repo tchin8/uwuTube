@@ -6,7 +6,9 @@ import { fetchVideos } from '../../actions/video_actions';
 import { fetchUsers } from '../../actions/user_actions';
 
 const mSTP = (state) => ({
+  users: state.entities.users,
   currentUser: state.entities.users[state.session.id],
+  videos: state.videos,
 });
 
 const mDTP = (dispatch) => ({

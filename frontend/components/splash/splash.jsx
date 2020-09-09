@@ -9,33 +9,58 @@ class Splash extends React.Component {
 
     this.state = {
       currentUser: props.currentUser,
-      focus: 'home',
-    }
+      focus: "home",
+    };
   }
 
   // componentDidMount() {
   //   this.props.fetchUsers();
   //   this.props.fetchVideos();
   // }
+  dateUploaded(datetime) {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    let date = new Date(datetime);
+    let month = months[date.getMonth()];
+    let day = date.getDate();
+    let year = date.getFullYear();
+    return `${month} ${day}, ${year}`;
+  }
 
   render() {
+    let { users, videos } = this.props;
+    if (!videos || !users) return null;
+
     let moreSelectionsOrLogIn;
     if (!this.state.currentUser) {
       moreSelectionsOrLogIn = (
         <>
-        <div className="div"></div>
-        <div className="login">
-          <span>Sign in to like videos, comment, and subscribe.</span>
-          <br />
-          <Link to="/login">
-            <button className="signin">
-              <FontAwesomeIcon icon="user-circle" className="user-circle" />
-              <span>SIGN IN</span>
-            </button>
-          </Link>
-        </div>
+          <div className="div"></div>
+          <div className="login">
+            <span>Sign in to like videos, comment, and subscribe.</span>
+            <br />
+            <Link to="/login">
+              <button className="signin">
+                <FontAwesomeIcon icon="user-circle" className="user-circle" />
+                <span>SIGN IN</span>
+              </button>
+            </Link>
+          </div>
         </>
-      )
+      );
     } else {
       moreSelectionsOrLogIn = (
         <>
@@ -52,8 +77,34 @@ class Splash extends React.Component {
             <span>Liked videos</span>
           </li>
         </>
-      )
+      );
     }
+
+    videos = Object.values(videos);
+    let allVideos = videos.map((v, i) => {
+      let uploader = users[v.user_id];
+      return (
+        <Link to={`/videos/${v.id}`} key={i} style={{ textDecoration: "none" }}>
+          <li className="each-video">
+            <div className="video-container">
+              <video src={v.videoUrl}></video>
+            </div>
+            <div className="video-info">
+              <div className="user-circle">
+                <span>{uploader.fname[0].toUpperCase()}</span>
+              </div>
+              <div className="info">
+                <span className="title">{v.title}</span>
+                <span className="uploader">
+                  {uploader.fname} {uploader.lname}
+                </span>
+                <span>0 views • {this.dateUploaded(v.created_at)}</span>
+              </div>
+            </div>
+          </li>
+        </Link>
+      );
+    });
 
     return (
       <section className="splash">
@@ -85,9 +136,7 @@ class Splash extends React.Component {
           </ul>
         </section>
         <section className="main">
-          <span>
-            HELLOOO MAIN!!
-          </span>
+          <ul className="videos">{allVideos}</ul>
         </section>
       </section>
     );
