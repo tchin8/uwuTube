@@ -8,6 +8,7 @@
         json.set! comment.id do 
           json.extract! comment, :id, :user_id, :video_id, :body, :created_at, :parent_comment_id
         end 
+      end 
     end 
   end 
 end 
