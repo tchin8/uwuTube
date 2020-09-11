@@ -81,7 +81,7 @@ class Splash extends React.Component {
         </section>
         <section className="main">
           <span>
-            HELLOOO MAIN!!
+            hi main
           </span>
         </section>
       </section>

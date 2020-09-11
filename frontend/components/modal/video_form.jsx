@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link } from "react-router-dom";
+import {Player, ControlBar } from 'video-react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class VideoForm extends React.Component {
