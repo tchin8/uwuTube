@@ -9,20 +9,25 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
 
-    if (props.video) {
-      this.state = {
-        user_id: props.currentUser.id || '',
-        video_id: props.match.params.videoId,
-        body: ''
-      }
+    let currUser = props.currentUser ? props.currentUser.id : '';
+    this.state = {
+      user_id: currUser,
+      video_id: undefined,
+      body: ""
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUsers()
       .then(() => this.props.fetchVideos())
-      .then(() => this.props.fetchComments(this.props.match.params.videoId));
-      // .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+      .then(() => this.props.fetchComments(this.props.match.params.videoId))
+      .then(() => this.setState = ({
+        user_id: this.props.currentUser,
+        video_id: this.props.video.id,
+      }));
   }
 
   dateUploaded(datetime) {
@@ -48,11 +53,27 @@ class Video extends React.Component {
     return `${month} ${day}, ${year}`;
   }
 
+  update(field) {
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createComment(this.state);
+  }
+
   render() {
     const { video, users, currentUser } = this.props;
-    if (!video || !video.comments) return null;
+    if (!video || !video.comments || !this.state) return null;
     let uploader = users[video.user_id];
     let numComments = video.comments.length;
+
+    const defaultThumb = window.default_thumb;
+    let commentThumbnail = !currentUser ? 
+      <img src={defaultThumb} className='default-thumb'/> : 
+      <span>{currentUser.fname[0].toUpperCase()}</span>
 
     return (
       <section className="video-show">
@@ -83,21 +104,27 @@ class Video extends React.Component {
                   <p>{video.description}</p>
                 </div>
 
-                <button>SUBSCRIBE</button>
                 {/* make this button functional */}
+                <button>SUBSCRIBE</button>
+                <FontAwesomeIcon icon={['far', 'bell']}
+                  className="bell" />
               </div>
             </div>
 
             <div className='comments'>
               <span>{numComments} {numComments === 1 ? 'comment' : 'comments'}</span>
-              <form className='comment'>
-                {/* <div className='user-circle'>
-                  <span>{currentUser.fname[0].toUpperCase()}</span>
-                </div> */}
+              <form className='comment' onSubmit={this.handleSumbit}>
+                <div className='user-circle'>
+                  {commentThumbnail}
+                </div>
                 <div>
-                  <textarea placeholder='Add a public comment'></textarea>
-                  <span className='hidden'>Cancel</span>
-                  {/* <button className='hidden' disabled={this.state.body.length}>COMMENT</button> */}
+                  <textarea placeholder='Add a public comment' 
+                    onChange={this.update('body')}
+                    value={this.state.body}></textarea>
+                  <div className='btns'>
+                    <span className='cxl hidden'>CANCEL</span>
+                    <button className='hidden' disabled={!this.state.body.length}>COMMENT</button>
+                  </div>
                 </div>
               </form>
               <CommentIndexContainer users={users} video={video}/>

@@ -8,6 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
+    <script>
+      window.default_thumb="<%= image_url("default_thumb.png") %>"
+    </script>
+
     <% if current_user %>
       <script type="text/javascript" >
         window.currentUser = {
