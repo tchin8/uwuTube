@@ -8,11 +8,12 @@ class CommentIndex extends React.Component {
   }
 
   render() {
-    const { video, users, fetchComments } = this.props;
+    const { video, users, fetchComments, newComments } = this.props;
     if (!video.comments) return null;
 
+    debugger;
     let comments;
-    comments = Object.values(video.comments);
+    comments = Object.values(newComments);
     return (
       <ul className="comments-index">
         {comments.map(comment => (

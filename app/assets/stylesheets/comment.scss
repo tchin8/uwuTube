@@ -1,0 +1,19 @@
+div.each-comment {
+  display: flex;
+  
+  div.user-circle {
+    background-color: #c2185b;
+    border-radius: 100%;
+    height: 42px;
+    width: 42px;
+    margin-right: 16px;
+
+    span {
+      color: #ffffff;
+      font-size: 24px;
+      position: relative;
+      top: 8px;
+      left: 14px;
+    }
+  }
+}

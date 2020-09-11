@@ -4,7 +4,7 @@ import { fetchComments } from '../../actions/comment_actions';
 
 
 const mSTP = state => ({
-  newComment: state.comments,
+  newComments: state.comments,
 });
 
 const mDTP = dispatch => ({

@@ -36,7 +36,7 @@ button:focus, input:focus, textarea:focus {
 	outline: 0;
 }
 
-video {
+video, textarea {
 	border: none;
 	outline: none;
 }

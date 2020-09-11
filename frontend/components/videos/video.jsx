@@ -9,25 +9,22 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
 
-    let currUser = props.currentUser ? props.currentUser.id : '';
+    let currUser = props.currentUser ? props.currentUser.id : undefined;
     this.state = {
       user_id: currUser,
-      video_id: undefined,
-      body: ""
+      video_id: parseInt(this.props.match.params.videoId),
+      body: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUsers()
       .then(() => this.props.fetchVideos())
-      .then(() => this.props.fetchComments(this.props.match.params.videoId))
-      .then(() => this.setState = ({
-        user_id: this.props.currentUser,
-        video_id: this.props.video.id,
-      }));
+      .then(() => this.props.fetchComments(this.props.match.params.videoId));
   }
 
   dateUploaded(datetime) {
@@ -43,8 +40,8 @@ class Video extends React.Component {
       "Sep",
       "Oct",
       "Nov",
-      "Dec"
-    ]
+      "Dec",
+    ];
 
     let date = new Date(datetime);
     let month = months[date.getMonth()];
@@ -54,14 +51,22 @@ class Video extends React.Component {
   }
 
   update(field) {
-    return (e) => (
-      this.setState({ [field]: e.currentTarget.value })
-    );
+    return (e) => this.setState({ [field]: e.currentTarget.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.createComment(this.state);
+  }
+
+  handleFocus(e) {
+    e.preventDefault();
+    $("div.btns").addClass("show");
+  }
+
+  handleCancel(e) {
+    e.preventDefault();
+    $("div.btns").removeClass("show");
   }
 
   render() {
@@ -71,73 +76,87 @@ class Video extends React.Component {
     let numComments = video.comments.length;
 
     const defaultThumb = window.default_thumb;
-    let commentThumbnail = !currentUser ? 
-      <img src={defaultThumb} className='default-thumb'/> : 
+    let commentThumbnail = !currentUser ? (
+      <img src={defaultThumb} className="default-thumb" />
+    ) : (
       <span>{currentUser.fname[0].toUpperCase()}</span>
+    );
 
     return (
       <section className="video-show">
         <NavContainer />
         <section className="main">
           <div className="left">
-            <div className='video-container'>
-              <video src={video.videoUrl} controls>
-              </video>
+            <div className="video-container">
+              <video src={video.videoUrl} controls></video>
             </div>
             <div className="info">
-              <div className='row-1'>
-                <span className='title'>{video.title}</span>
+              <div className="row-1">
+                <span className="title">{video.title}</span>
                 <span>0 views • {this.dateUploaded(video.created_at)}</span>
                 {/* make dynamic views later when add views column */}
               </div>
 
-              <div className='row-2'>
-                <div className='col-thumbnail'>
-                  <div className='user-circle'>
+              <div className="row-2">
+                <div className="col-thumbnail">
+                  <div className="user-circle">
                     <span>{uploader.fname[0].toUpperCase()}</span>
                   </div>
                 </div>
-                <div className='col-info'>
-                  <span className='name'>{uploader.fname} {uploader.lname}</span>
+                <div className="col-info">
+                  <span className="name">
+                    {uploader.fname} {uploader.lname}
+                  </span>
                   <span>0 subscribers</span>
                   {/* make dynamic subs later */}
                   <p>{video.description}</p>
                 </div>
 
-                {/* make this button functional */}
-                <button>SUBSCRIBE</button>
-                <FontAwesomeIcon icon={['far', 'bell']}
-                  className="bell" />
+                <div className="sub">
+                  {/* make this button functional */}
+                  <button>SUBSCRIBE</button>
+                  {currentUser ? (
+                    <FontAwesomeIcon icon={["far", "bell"]} className="bell" />
+                  ) : null}
+                </div>
               </div>
             </div>
 
-            <div className='comments'>
-              <span>{numComments} {numComments === 1 ? 'comment' : 'comments'}</span>
-              <form className='comment' onSubmit={this.handleSumbit}>
-                <div className='user-circle'>
-                  {commentThumbnail}
-                </div>
+            <div className="comments">
+              <span>
+                {numComments} {numComments === 1 ? "comment" : "comments"}
+              </span>
+              <form className="comment" onSubmit={this.handleSumbit}>
+                <div className="user-circle">{commentThumbnail}</div>
                 <div>
-                  <textarea value={this.state.body}
-                    placeholder='Add a public comment' 
-                    onChange={this.update('body')}></textarea>
-                  <div className='btns'>
-                    <span className='cxl hidden'>CANCEL</span>
-                    <button className='hidden' disabled={!this.state.body.length}>COMMENT</button>
+                  <textarea
+                    value={this.state.body}
+                    placeholder="Add a public comment"
+                    onChange={this.update('body')}
+                    onFocus={this.handleFocus}
+                  ></textarea>
+                  <div className="btns">
+                    <span className="cxl" onClick={this.handleCancel}>CANCEL</span>
+                    <button
+                      className="comment"
+                      disabled={!this.state.body.length}
+                    >
+                      COMMENT
+                    </button>
                   </div>
                 </div>
               </form>
-              <CommentIndexContainer users={users} video={video}/>
+              <CommentIndexContainer users={users} video={video} />
             </div>
           </div>
 
-          <div className='right'>
+          <div className="right">
             <span>Up Next</span>
             {/* ul, li's of videos */}
           </div>
         </section>
       </section>
-    )
+    );
   }
 }
 
