@@ -14,7 +14,7 @@ class Video extends React.Component {
       user_id: currUser,
       video_id: undefined,
       body: ""
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -54,9 +54,9 @@ class Video extends React.Component {
   }
 
   update(field) {
-    return (e) => {
-      this.setState({ [field]: e.target.value });
-    };
+    return (e) => (
+      this.setState({ [field]: e.currentTarget.value })
+    );
   }
 
   handleSubmit(e) {
@@ -118,9 +118,9 @@ class Video extends React.Component {
                   {commentThumbnail}
                 </div>
                 <div>
-                  <textarea placeholder='Add a public comment' 
-                    onChange={this.update('body')}
-                    value={this.state.body}></textarea>
+                  <textarea value={this.state.body}
+                    placeholder='Add a public comment' 
+                    onChange={this.update('body')}></textarea>
                   <div className='btns'>
                     <span className='cxl hidden'>CANCEL</span>
                     <button className='hidden' disabled={!this.state.body.length}>COMMENT</button>
