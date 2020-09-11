@@ -1,17 +1,27 @@
 import React from "react";
 import { Route, Redirect, Switch, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CommentIndexContainer from './comment_index_container';
 
 import NavContainer from '../nav/nav_container'
 
 class Video extends React.Component {
   constructor(props) {
     super(props);
+
+    if (props.video) {
+      this.state = {
+        user_id: props.currentUser.id || '',
+        video_id: props.match.params.videoId,
+        body: ''
+      }
+    }
   }
 
   componentDidMount() {
     this.props.fetchUsers()
       .then(() => this.props.fetchVideos())
+      .then(() => this.props.fetchComments(this.props.match.params.videoId));
       // .then(() => this.props.fetchVideo(this.props.match.params.videoId));
   }
 
@@ -39,9 +49,10 @@ class Video extends React.Component {
   }
 
   render() {
-    const { video, users } = this.props;
-    if (!video) return null;
+    const { video, users, currentUser } = this.props;
+    if (!video || !video.comments) return null;
     let uploader = users[video.user_id];
+    let numComments = video.comments.length;
 
     return (
       <section className="video-show">
@@ -78,7 +89,18 @@ class Video extends React.Component {
             </div>
 
             <div className='comments'>
-              {/* comments go here */}
+              <span>{numComments} {numComments === 1 ? 'comment' : 'comments'}</span>
+              <form className='comment'>
+                {/* <div className='user-circle'>
+                  <span>{currentUser.fname[0].toUpperCase()}</span>
+                </div> */}
+                <div>
+                  <textarea placeholder='Add a public comment'></textarea>
+                  <span className='hidden'>Cancel</span>
+                  {/* <button className='hidden' disabled={this.state.body.length}>COMMENT</button> */}
+                </div>
+              </form>
+              <CommentIndexContainer users={users} video={video}/>
             </div>
           </div>
 

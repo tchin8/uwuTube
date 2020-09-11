@@ -8,19 +8,24 @@ function videosReducer(state = {} , action) {
   switch (action.type) {
     case RECEIVE_ALL_VIDEOS:
       return Object.assign({}, action.videos);
+
     case RECEIVE_VIDEO:
       newState[action.video.id] = action.video;
       return newState;
+
     case REMOVE_VIDEO:
       delete newState[action.videoId];
       return newState;
+
     case RECEIVE_COMMENT:
       newState[action.comment.video_id]["comments"] = newState[action.comment.video_id]["comments"] || {};
       newState[action.comment.video_id]["comments"][action.comment.id] = action.comment;
       return newState;
-    case REMOVE_VIDEO:
-      delete newState[action.commentId];
-      return newState;
+
+    // case REMOVE_COMMENT:
+    //   delete newState[action.commentId];
+    //   return newState;
+
     default:
       return state;
   }

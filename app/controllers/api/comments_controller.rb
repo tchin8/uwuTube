@@ -3,7 +3,7 @@ class Api::CommentsController < ApplicationController
 
   def index 
     @video = Video.find(params[:video_id])
-    @comments = video.comments
+    @comments = @video.comments
     render :index
   end 
 

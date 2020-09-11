@@ -19,8 +19,8 @@ const removeComment = commentId => ({
   commentId
 });
 
-export const fetchComments = (postId) => dispatch => (
-  CommentApiUtil.fetchComments(postId)
+export const fetchComments = (videoId) => dispatch => (
+  CommentApiUtil.fetchComments(videoId)
     .then(comments => dispatch(receiveComments(comments)))
 );
 

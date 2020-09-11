@@ -54,3 +54,20 @@ v3 = open('https://uwutube-seeds.s3.amazonaws.com/above_and_beyond.mov')
 vid1.vid.attach(io: v1, filename: 'lexus.mov')
 vid2.vid.attach(io: v2, filename: 'kaskade.mov')
 vid3.vid.attach(io: v3, filename: 'above_and_beyond.mov')
+
+c1 = Comment.create!(
+  user_id: user1.id, 
+  video_id: vid3.id, 
+  body: 'They were awesome!!'
+)
+c2 = Comment.create!(
+  user_id: user2.id, 
+  video_id: vid1.id, 
+  body: 'weird cat...'
+)
+c3 = Comment.create!(
+  user_id: user2.id, 
+  video_id: vid3.id, 
+  parent_comment_id: c1.id, 
+  body: 'Ultra was amazing'
+)

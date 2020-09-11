@@ -20,6 +20,6 @@ class Video < ApplicationRecord
 
   has_many :comments,
     class_name: :Comment,
-    foreign_key: :video_id
+    foreign_key: :video_id,
     dependent: :destroy
 end

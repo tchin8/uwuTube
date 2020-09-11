@@ -4,12 +4,17 @@
     json.videoUrl url_for(v.vid)
 
     json.comments do 
-      v.comments.each do |c|
-        json.set! comment.id do 
-          json.extract! comment, :id, :user_id, :video_id, :body, :created_at, :parent_comment_id
-        end 
-      end 
+      json.array!(v.comments.map { |c| c.id} )
+      # json.array!((v.comments.select { |c| !c.parent_comment_id }).map { |c| c.id })
     end 
+
+    #json.comments do 
+    #  v.comments.each do |c|
+    #    json.set! c.id do 
+    #      json.extract! c, :id, :user_id, :video_id, :body, :created_at, :parent_comment_id
+    #    end 
+    #  end 
+    #end 
   end 
 end 
 
