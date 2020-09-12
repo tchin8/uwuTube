@@ -29,20 +29,32 @@ function CommentIndexItem({ comment, users }) {
   }
 
   let commenter = users[comment.user_id];
+  let replies;
+  
 
   return (
     <div className="each-comment">
       <div className="user-circle">
         <span>{commenter.fname[0].toUpperCase()}</span>
       </div>
-      <div className='comment-details'>
-        <div className='row-1'>
-          <span>{commenter.fname} {commenter.lname}</span>
+      <div className="comment-details">
+        <div className="row-1">
+          <span>
+            {commenter.fname} {commenter.lname}
+          </span>
           <span>{commentedTimeAgo(comment.created_at)}</span>
         </div>
-        <span className='actual-comment'>{comment.body}</span>
-        <div className='row-3'>
-          <button className='reply'>REPLY</button>
+        <span className="actual-comment">{comment.body}</span>
+        <div className="row-3">
+          <FontAwesomeIcon
+            icon="thumbs-up"
+            className="thumbs-up"
+          />
+          <FontAwesomeIcon
+            icon="thumbs-down"
+            className="thumbs-down"
+          />
+          <button className="reply">REPLY</button>
         </div>
       </div>
     </div>

@@ -24,7 +24,8 @@ import {
   faFire,
   faThumbsUp,
   faClock,
-  faCloudUploadAlt
+  faCloudUploadAlt,
+  faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faBell,
@@ -52,6 +53,7 @@ library.add(
   faClock,
   faCloudUploadAlt,
   faBell,
+  faThumbsDown,
 );
 
 document.addEventListener("DOMContentLoaded", () => {

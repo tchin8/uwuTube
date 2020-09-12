@@ -11,7 +11,6 @@ class CommentIndex extends React.Component {
     const { video, users, fetchComments, newComments } = this.props;
     if (!video.comments) return null;
 
-    debugger;
     let comments;
     comments = Object.values(newComments);
     return (
