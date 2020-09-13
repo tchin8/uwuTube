@@ -6,7 +6,8 @@ uwuTube is still a work in progress. Click [here](https://uwutube.herokuapp.com/
 
 **Up and Running:**
   - login, signup
-  - video upload (no show page yet!)
+  - video upload
+  - comments
 
 ## Technologies
 uwuTube utilizes AWS S3, Heroku, PostGreSQL React, Redux, and Ruby on Rails.
