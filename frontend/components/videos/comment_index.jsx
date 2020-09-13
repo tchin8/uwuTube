@@ -15,7 +15,7 @@ class CommentIndex extends React.Component {
     comments = Object.values(newComments);
     return (
       <ul className="comments-index">
-        {comments.map(comment => (
+        {comments.reverse().map(comment => (
           <CommentIndexItem key={comment.id}
             // fetchComments={fetchComments}
             comment={comment}

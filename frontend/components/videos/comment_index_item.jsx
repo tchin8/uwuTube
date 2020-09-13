@@ -57,7 +57,7 @@ function CommentIndexItem({ comment, users, video }) {
         </div>
       );
       replies = reps.map((r, i) => <div className='comment-replies'>
-        <CommentIndex key={i} users={users} video={video} newComments={reps}/>
+        <CommentIndex key={i} users={users} video={video} newComments={reps.reverse()}/>
       </div>)
     }
   }

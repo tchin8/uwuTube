@@ -16,7 +16,7 @@ const mDTP = dispatch => ({
   fetchVideos: () => dispatch(fetchVideos()),
   fetchUsers: () => dispatch(fetchUsers()),
   fetchComments: videoId => dispatch(fetchComments(videoId)),
-  createCommment: comment => dispatch(createCommment(comment)),
+  createComment: comment => dispatch(createComment(comment)),
 });
 
 export default connect(mSTP, mDTP)(Video);

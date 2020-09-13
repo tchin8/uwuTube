@@ -55,8 +55,9 @@ class Video extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log('click')
     e.preventDefault();
-    this.props.createComment(this.state);
+    this.props.createComment(this.state).then(() => this.setState({ body: '' }));
   }
 
   handleFocus(e) {
@@ -130,30 +131,34 @@ class Video extends React.Component {
               <span>
                 {numComments} {numComments === 1 ? "comment" : "comments"}
               </span>
-              <form className="comment" onSubmit={this.handleSumbit}>
+              <form className="comment">
                 <div className="user-circle">{commentThumbnail}</div>
                 <div>
                   <textarea
                     value={this.state.body}
                     placeholder="Add a public comment"
-                    onChange={this.update('body')}
+                    onChange={this.update("body")}
                     onFocus={this.handleFocus}
                   ></textarea>
                   <div className="btns">
-                    <span className="cxl" onClick={this.handleCancel}>CANCEL</span>
+                    <span className="cxl" onClick={this.handleCancel}>
+                      CANCEL
+                    </span>
                     <button
                       className="comment"
-                      disabled={!this.state.body.length}
+                      onClick={this.handleSubmit}
+                      disabled={this.state.body.length === 0}
                     >
                       COMMENT
                     </button>
                   </div>
                 </div>
               </form>
-              <CommentIndexContainer 
-                users={users} 
-                video={video} 
-                currentUser={currentUser} />
+              <CommentIndexContainer
+                users={users}
+                video={video}
+                currentUser={currentUser}
+              />
             </div>
           </div>
 
