@@ -60,8 +60,12 @@ class Video extends React.Component {
   }
 
   handleFocus(e) {
-    e.preventDefault();
-    $("div.btns").addClass("show");
+    if (!this.props.currentUser) {
+      this.props.history.push('/login');
+    } else {
+      e.preventDefault();
+      $("div.btns").addClass("show");
+    }
   }
 
   handleCancel(e) {
@@ -146,7 +150,10 @@ class Video extends React.Component {
                   </div>
                 </div>
               </form>
-              <CommentIndexContainer users={users} video={video} />
+              <CommentIndexContainer 
+                users={users} 
+                video={video} 
+                currentUser={currentUser} />
             </div>
           </div>
 
