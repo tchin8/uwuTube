@@ -1,7 +1,8 @@
 import React from 'react';
+import CommentIndex from "./comment_index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function CommentIndexItem({ comment, users }) {
+function CommentIndexItem({ comment, users, video }) {
 
   const commentedTimeAgo = (datetime) => {
     if (comment.created_at === undefined) {
@@ -28,9 +29,38 @@ function CommentIndexItem({ comment, users }) {
     }
   }
 
+  const handleRepliesButton = () => {
+    const view = document.getElementById('view');
+    const hide = document.getElementById('hide');
+    const replies = document.getElementsByClassName('comment-replies')[0];
+
+    view.classList.toggle('show')
+    hide.classList.toggle('show')
+    replies.classList.toggle('show')
+  }
+
   let commenter = users[comment.user_id];
-  let replies;
-  
+  let repliesBtn = null, replies = null;
+  const reps = comment.replies;
+  if (reps) {
+    if (reps.length > 0) {
+      repliesBtn = (
+        <div>
+          <button className="replies view show" id='view' onClick={() => handleRepliesButton()}>
+            <FontAwesomeIcon icon="caret-down" className="caret" />
+            View {reps.length === 1 ? "reply" : `${reps.length} replies`}
+          </button>
+          <button className="replies hide" id='hide' onClick={() => handleRepliesButton()}>
+            <FontAwesomeIcon icon="caret-up" className="caret" />
+            Hide {reps.length === 1 ? "reply" : `${reps.length} replies`}
+          </button>
+        </div>
+      );
+      replies = reps.map((r, i) => <div className='comment-replies'>
+        <CommentIndex key={i} users={users} video={video} newComments={reps}/>
+      </div>)
+    }
+  }
 
   return (
     <div className="each-comment">
@@ -56,6 +86,8 @@ function CommentIndexItem({ comment, users }) {
           />
           <button className="reply">REPLY</button>
         </div>
+        {repliesBtn}
+        {replies}
       </div>
     </div>
   );

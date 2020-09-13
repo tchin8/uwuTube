@@ -17,7 +17,7 @@ class CommentIndex extends React.Component {
       <ul className="comments-index">
         {comments.map(comment => (
           <CommentIndexItem key={comment.id}
-            fetchComments={fetchComments}
+            // fetchComments={fetchComments}
             comment={comment}
             video={video}
             users={users} />

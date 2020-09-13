@@ -47,4 +47,38 @@ div.each-comment {
       padding-left: 20px;
     }
   }
+
+  button.replies {
+    display: none;
+    color: #0a5ed4;
+    font-size: 14px;
+    margin-top: 14px;
+    padding-left: 0;
+    .caret {
+      padding-right: 10px;
+    }
+  }
+  button.replies.show {
+    display: block;
+  }
+}
+
+div.comment-replies {
+  display: none;
+  ul.comments-index > div.each-comment{
+    margin-top: 14px;
+    div.user-circle {
+      height: 25px;
+      width: 25px;
+      span {
+        font-size: 14px;
+        top: 3px;
+        left: 9px;
+      }
+    }
+  } 
+} 
+
+div.comment-replies.show {
+  display: block;
 }
