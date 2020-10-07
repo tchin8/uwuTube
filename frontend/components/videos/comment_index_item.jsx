@@ -40,6 +40,10 @@ function CommentIndexItem({ comment, users, video }) {
     replies.classList.toggle('show')
   }
 
+  const handleClick = () => {
+
+  }
+
   let commenter = users[comment.user_id];
   let repliesBtn = null, replies = null;
   const reps = comment.replies;
@@ -85,9 +89,9 @@ function CommentIndexItem({ comment, users, video }) {
             icon="thumbs-down"
             className="thumbs-down"
           />
-          <button className="reply">REPLY</button>
+          <button className="reply" onClick={() => handleClick()}>REPLY</button>
         </div>
-        <CommentFormContainer video={video} />
+        {/* <CommentFormContainer video={video} /> */}
         {repliesBtn}
         {replies}
       </div>
