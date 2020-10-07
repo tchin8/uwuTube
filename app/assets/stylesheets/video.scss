@@ -6,10 +6,11 @@ section.video-show {
     justify-content: space-between;
     height: 100%;
     min-height: 100vh;
-    width: 100vw;
+    // width: 100vw;
+    width: 100%;
 
     div.left {
-      margin: 24px 0 0 42px;
+      margin: 24px 0 0 36px;
       width: calc(100vw - 510px);
 
       div.video-container {
@@ -118,94 +119,13 @@ section.video-show {
       div.comments {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 16px;
-        form.comment {
-          display: flex;
-          padding: 30px 0;
-
-          div.user-circle {
-            background-color: #c2185b;
-            border-radius: 100%;
-            height: 42px;
-            width: 42px;
-            margin-right: 16px;
-
-            img.default-thumb {
-              border-radius: 100%;
-              height: 100%;
-              width: 100%;
-            }
-            span {
-              color: #ffffff;
-              font-size: 24px;
-              position: relative;
-              top: 6px;
-              left: 15px;
-            }
-          }
-
-          div:last-child {
-            display: flex;
-            flex-direction: column;
-
-            textarea {
-              box-sizing: border-box;
-              background-color: inherit;
-              border-bottom: 1px solid #e0e0e0;
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-              // padding-top: 10px;
-              height: 32px;
-              width: calc(100vw - 574px);
-              resize: none;
-            }
-
-            textarea::placeholder {
-              color: #606060;
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
-            }
-
-            textarea:focus {
-              border-bottom: 2px solid #000000;
-            }
-
-            div.btns {
-              display: none;
-              flex-direction: row;
-              justify-content: flex-end;
-              margin-top: 6px;
-
-              span.cxl {
-                color: #616161;
-                cursor: pointer;
-                font-size: 14px;
-                height: 36px;
-                padding: 8px 24px 0 0;
-              }
-              
-              button.comment {
-                background-color: #0a5ed4;
-                border-radius: 2px;
-                color: white;
-                height: 36px;
-                width: 102px;
-              }
-
-              button.comment:disabled {
-                background-color: #cccccc!important;
-              }
-            }
-
-            div.btns.show {
-              display: flex;
-            }
-          }
-        }
       }
     }
 
     div.right {
       min-height: 100%;
       width: 402px;
-      margin: 24px 42px 0 0;
+      margin: 24px 36px 0 0;
 
       span {
         // remove later, just for sizing

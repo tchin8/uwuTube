@@ -2,23 +2,13 @@ import React from "react";
 import { Route, Redirect, Switch, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CommentIndexContainer from './comment_index_container';
+import CommentFormContainer from './comment_form_container';
 
 import NavContainer from '../nav/nav_container'
 
 class Video extends React.Component {
   constructor(props) {
     super(props);
-
-    let currUser = props.currentUser ? props.currentUser.id : undefined;
-    this.state = {
-      user_id: currUser,
-      video_id: parseInt(this.props.match.params.videoId),
-      body: "",
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -50,42 +40,11 @@ class Video extends React.Component {
     return `${month} ${day}, ${year}`;
   }
 
-  update(field) {
-    return (e) => this.setState({ [field]: e.currentTarget.value });
-  }
-
-  handleSubmit(e) {
-    console.log('click')
-    e.preventDefault();
-    this.props.createComment(this.state).then(() => this.setState({ body: '' }));
-  }
-
-  handleFocus(e) {
-    if (!this.props.currentUser) {
-      this.props.history.push('/login');
-    } else {
-      e.preventDefault();
-      $("div.btns").addClass("show");
-    }
-  }
-
-  handleCancel(e) {
-    e.preventDefault();
-    $("div.btns").removeClass("show");
-  }
-
   render() {
     const { video, users, currentUser } = this.props;
-    if (!video || !video.comments || !this.state) return null;
+    if (!video || !video.comments) return null;
     let uploader = users[video.user_id];
     let numComments = video.comments.length;
-
-    const defaultThumb = window.default_thumb;
-    let commentThumbnail = !currentUser ? (
-      <img src={defaultThumb} className="default-thumb" />
-    ) : (
-      <span>{currentUser.fname[0].toUpperCase()}</span>
-    );
 
     return (
       <section className="video-show">
@@ -131,29 +90,7 @@ class Video extends React.Component {
               <span>
                 {numComments} {numComments === 1 ? "comment" : "comments"}
               </span>
-              <form className="comment">
-                <div className="user-circle">{commentThumbnail}</div>
-                <div>
-                  <textarea
-                    value={this.state.body}
-                    placeholder="Add a public comment"
-                    onChange={this.update("body")}
-                    onFocus={this.handleFocus}
-                  ></textarea>
-                  <div className="btns">
-                    <span className="cxl" onClick={this.handleCancel}>
-                      CANCEL
-                    </span>
-                    <button
-                      className="comment"
-                      onClick={this.handleSubmit}
-                      disabled={this.state.body.length === 0}
-                    >
-                      COMMENT
-                    </button>
-                  </div>
-                </div>
-              </form>
+              <CommentFormContainer video={video}/>
               <CommentIndexContainer
                 users={users}
                 video={video}

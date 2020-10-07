@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentIndex from "./comment_index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CommentFormContainer from "./comment_form_container";
 
 function CommentIndexItem({ comment, users, video }) {
 
@@ -37,6 +38,10 @@ function CommentIndexItem({ comment, users, video }) {
     view.classList.toggle('show')
     hide.classList.toggle('show')
     replies.classList.toggle('show')
+  }
+
+  const handleClick = () => {
+
   }
 
   let commenter = users[comment.user_id];
@@ -84,8 +89,9 @@ function CommentIndexItem({ comment, users, video }) {
             icon="thumbs-down"
             className="thumbs-down"
           />
-          <button className="reply">REPLY</button>
+          <button className="reply" onClick={() => handleClick()}>REPLY</button>
         </div>
+        {/* <CommentFormContainer video={video} /> */}
         {repliesBtn}
         {replies}
       </div>

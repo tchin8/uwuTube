@@ -8,6 +8,7 @@ section.top-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 999;
 
   div.left {
     margin-left: 22px;
