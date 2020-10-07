@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentIndex from "./comment_index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CommentFormContainer from "./comment_form_container";
 
 function CommentIndexItem({ comment, users, video }) {
 
@@ -86,6 +87,7 @@ function CommentIndexItem({ comment, users, video }) {
           />
           <button className="reply">REPLY</button>
         </div>
+        <CommentFormContainer video={video} />
         {repliesBtn}
         {replies}
       </div>
