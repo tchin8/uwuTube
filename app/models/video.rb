@@ -26,4 +26,8 @@ class Video < ApplicationRecord
   has_many :views,
     class_name: :View,
     foreign_key: :video_id,
+  
+  has_many :likes, 
+    as: :likeable,
+    dependent: :destroy 
 end

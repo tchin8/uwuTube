@@ -30,6 +30,11 @@ class User < ApplicationRecord
     has_many :views,
         class_name: :View,
         foreign_key: :user_id
+    
+    has_many :likes,
+        foreign_key: :liker_id,
+        class_name: :Like,
+        dependent: :destroy
 
     
     def self.find_by_credentials(email, password)
