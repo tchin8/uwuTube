@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_195427) do
+ActiveRecord::Schema.define(version: 2020_10_14_001843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_09_10_195427) do
     t.index ["video_id"], name: "index_comments_on_video_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "liker_id", null: false
+    t.string "likeable_type"
+    t.bigint "likeable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
+    t.index ["liker_id", "likeable_type", "likeable_id"], name: "index_likes_on_liker_id_and_likeable_type_and_likeable_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "fname", null: false
     t.string "lname", null: false
@@ -66,6 +76,13 @@ ActiveRecord::Schema.define(version: 2020_09_10_195427) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_videos_on_user_id"
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
