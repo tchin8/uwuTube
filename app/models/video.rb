@@ -22,4 +22,12 @@ class Video < ApplicationRecord
     class_name: :Comment,
     foreign_key: :video_id,
     dependent: :destroy
+
+  has_many :views,
+    class_name: :View,
+    foreign_key: :video_id
+  
+  has_many :likes, 
+    as: :likeable,
+    dependent: :destroy 
 end
