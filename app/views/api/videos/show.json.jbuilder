@@ -4,3 +4,4 @@ json.comments do
   json.array!(v.comments.map { |c| c.id} )
   # json.array!((v.comments.select { |c| !c.parent_comment_id }).map { |c| c.id })
 end 
+json.views v.views.length

@@ -8,6 +8,8 @@
       # json.array!((v.comments.select { |c| !c.parent_comment_id }).map { |c| c.id })
     end 
 
+    json.views v.views.length
+
     #json.comments do 
     #  v.comments.each do |c|
     #    json.set! c.id do 
