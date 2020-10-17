@@ -17,7 +17,7 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6}, allow_nil: true
     attr_reader :password
 
-    after_initialize :ensure_session_token
+    after_initialize :ensure_session_token, :random_color
 
     has_many :videos,
         class_name: :Video,
@@ -36,6 +36,28 @@ class User < ApplicationRecord
         class_name: :Like,
         dependent: :destroy
 
+    def random_color
+        color = [
+            '#c2185b', 
+            '#02589c', 
+            '#aa47bc',
+            '#f6501e',
+            '#0398a6',
+            '#33691d',
+            '#465965',
+            '#ed417b',
+            '#be350d',
+            '#512ea7',
+            '#0087d1',
+            '#f06c00',
+            '#00897a',
+            '#679f39',
+            '#7d58c2',
+            '#798f9c',
+            '#5d4037',
+            ]
+        self.color = color.sample
+    end 
     
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
